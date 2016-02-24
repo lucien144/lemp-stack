@@ -1,13 +1,4 @@
 # Basic installation process of LEMP
-## References
-- https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
-- https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
-- https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration
-- https://gist.github.com/jsifalda/3331643
-- http://serverfault.com/questions/627903/is-the-php-option-cgi-fix-pathinfo-really-dangerous-with-nginx-php-fpm
-- https://easyengine.io/tutorials/nginx/tweaking-fastcgi-buffers/
-- https://gist.github.com/magnetikonline/11312172
-
 
 ## Shell commands
 
@@ -116,3 +107,14 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 - [ ] git
 - [ ] composer
 - [ ] bower
+
+
+## Reference
+- https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
+- https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
+- https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration
+- https://gist.github.com/jsifalda/3331643
+- http://serverfault.com/questions/627903/is-the-php-option-cgi-fix-pathinfo-really-dangerous-with-nginx-php-fpm
+- https://easyengine.io/tutorials/nginx/tweaking-fastcgi-buffers/
+- https://gist.github.com/magnetikonline/11312172
+- https://www.digitalocean.com/community/questions/warning-your-environment-specifies-an-invalid-locale-this-can-affect-your-user-experience-significantly-including-the-ability-to-manage-packages
