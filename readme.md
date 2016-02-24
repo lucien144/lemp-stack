@@ -1,6 +1,14 @@
 # Basic installation process of LEMP
 
-## Shell commands
+## Overview
+
+This document is step-by-step tutorial of really basic installation process of LEMP. I wrote it for myself, but feel free to use it. The LEMP consists of:
+
+- Nginx
+- PHP7
+- MariaDB
+
+## Tutorial
 
 ### add new user
 ```sh
@@ -102,11 +110,17 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 
 
 ## Todo
+- [ ] better description of nginx configuration
+- [ ] php-fpm settings
+- [ ] munin
+- [ ] adminer
 - [ ] script for creating new vhost
 - [ ] directory schema
 - [ ] git
 - [ ] composer
 - [ ] bower
+- [ ] Let's encrypt (?)
+- [ ] Create ISO
 
 
 ## Reference
