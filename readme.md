@@ -8,7 +8,7 @@ This document is step-by-step tutorial of really basic installation process of L
 - PHP7
 - MariaDB
 
-## Tutorial
+## Basic installation
 
 ### add new user
 ```sh
@@ -101,21 +101,106 @@ sudo apt-get install php7.0-curl php7.0-gd php7.0-mcrypt php7.0-sqlite3 php7.0-m
 php -v
 ```
 
-### Configure PHP & NGinx
-
 ### Restart Nginx
 ```sh
 sudo service nginx restart ; sudo systemctl status nginx.service
 ```
 
+## Add new website, configuring PHP & Nginx
+
+### User groups and roles
+```sh
+sudo groupadd www
+sudo groupadd new-website
+sudo useradd -g new-website
+sudo usermod -a -G www
+```
+
+### Create the dir structure for new website
+```sh
+sudo mkidr -p /var/www/vhosts/new-website.tld/web
+sudo mkidr -p /var/www/vhosts/new-website.tld/logs
+sudo mkidr -p /var/www/vhosts/new-website.tld/ssl
+sudo chown -R new-website:new-website /var/www/vhosts/new-website.tld
+sudo chmod -R 0775 /var/www/vhosts/new-website.tld
+```
+
+### Create new PHP-FPM pool for new site
+```sh
+sudo nano /etc/php/7.0/fpm/pool.d/new-website.tld.conf
+```
+
+#### Configure the new pool
+```sh
+[new-website]
+user = new-website
+group = new-website
+listen = /run/php/php7.0-fpm-new-website.sock
+listen.owner = www-data
+listen.group = www-data
+php_admin_value[disable_functions] = exec,passthru,shell_exec,system
+php_admin_flag[allow_url_fopen] = off
+pm = dynamic
+pm.max_children = 5
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3
+chdir = /
+```
+
+#### Restart PHP fpm and check it's running
+```sh
+sudo service php7.0-fpm restart
+ps aux | grep new-site
+```
+
+### Create new "vhost" for Nginx
+```sh
+sudo nano /etc/nginx/sites-available/new-site.tld
+```
+
+#### Configure the vhost
+```sh
+server {
+    listen 80;
+
+    root /var/www/vhosts/new-site.tld/web;
+    index index.php index.html index.htm;
+
+    server_name www.new-site.tld new-site.tld;
+
+    include /etc/nginx/conf.d/server/1-common.conf;
+
+    access_log /var/www/vhosts/new-site.tld/logs/access.log;
+    error_log /var/www/vhosts/new-site.tld/logs/error.log warn;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm-new-site.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
+
+#### Enable the new vhost
+```
+cd /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/new-site.tld new-site.tld
+sudo service nginx restart ; sudo systemctl status nginx.service
+```
 
 ## Todo
 - [ ] better description of nginx configuration
-- [ ] php-fpm settings
+- [x] php-fpm settings
 - [ ] munin
 - [ ] adminer
 - [ ] script for creating new vhost
-- [ ] directory schema
+- [x] directory schema
+- [ ] FTP
+- [x] User groups
 - [ ] git
 - [ ] composer
 - [ ] bower
@@ -132,6 +217,8 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 - https://easyengine.io/tutorials/nginx/tweaking-fastcgi-buffers/
 - https://gist.github.com/magnetikonline/11312172
 - https://www.digitalocean.com/community/questions/warning-your-environment-specifies-an-invalid-locale-this-can-affect-your-user-experience-significantly-including-the-ability-to-manage-packages
+- https://www.digitalocean.com/community/tutorials/how-to-host-multiple-websites-securely-with-nginx-and-php-fpm-on-ubuntu-14-04
+- https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
 
 ## License
 
