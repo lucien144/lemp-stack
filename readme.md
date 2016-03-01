@@ -106,21 +106,24 @@ php -v
 sudo service nginx restart ; sudo systemctl status nginx.service
 ```
 
-## Add new website, configuring PHP & Nginx
-
-### User groups and roles
-```sh
-sudo groupadd www
-sudo groupadd new-website
-sudo useradd -g new-website
-sudo usermod -a -G www
-```
+## Add new website, configuring PHP & Nginx & MariaDB
 
 ### Create the dir structure for new website
 ```sh
 sudo mkidr -p /var/www/vhosts/new-website.tld/web
 sudo mkidr -p /var/www/vhosts/new-website.tld/logs
 sudo mkidr -p /var/www/vhosts/new-website.tld/ssl
+```
+
+### User groups and roles
+```sh
+sudo groupadd new-website
+sudo useradd -g new-website -d /var/www/vhosts/new-website.tld new-website
+sudo passwd new-website
+```
+
+### Update permissions
+```sh
 sudo chown -R new-website:new-website /var/www/vhosts/new-website.tld
 sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 ```
@@ -192,7 +195,17 @@ sudo ln -s /etc/nginx/sites-available/new-site.tld new-site.tld
 sudo service nginx restart ; sudo systemctl status nginx.service
 ```
 
+### MariaDB (MySQL)
+```sh
+sudo mysql -u root -p
+> CREATE DATABASE newwebsite_tld;
+> CREATE USER 'newwebsite_tld'@'localhost' IDENTIFIED BY 'password';
+> GRANT ALL PRIVILEGES ON newwebsite_tld.* TO 'newwebsite_tld'@'localhost';
+> FLUSH PRIVILEGES;
+```
+
 ## Todo
+- [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
 - [x] php-fpm settings
 - [ ] munin
@@ -219,6 +232,7 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 - https://www.digitalocean.com/community/questions/warning-your-environment-specifies-an-invalid-locale-this-can-affect-your-user-experience-significantly-including-the-ability-to-manage-packages
 - https://www.digitalocean.com/community/tutorials/how-to-host-multiple-websites-securely-with-nginx-and-php-fpm-on-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
+- https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
 
 ## License
 
