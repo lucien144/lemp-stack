@@ -219,6 +219,8 @@ sudo mysql -u root -p
 - [ ] bower
 - [ ] Let's encrypt (?)
 - [ ] Create ISO
+- [ ] NPM
+- [ ] Bower?
 
 
 ## Reference
@@ -233,6 +235,8 @@ sudo mysql -u root -p
 - https://www.digitalocean.com/community/tutorials/how-to-host-multiple-websites-securely-with-nginx-and-php-fpm-on-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
+- https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
+- http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu
 
 ## License
 
