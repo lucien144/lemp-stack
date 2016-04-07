@@ -110,9 +110,9 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 
 ### Create the dir structure for new website
 ```sh
-sudo mkidr -p /var/www/vhosts/new-website.tld/web
-sudo mkidr -p /var/www/vhosts/new-website.tld/logs
-sudo mkidr -p /var/www/vhosts/new-website.tld/ssl
+sudo mkdir -p /var/www/vhosts/new-website.tld/web
+sudo mkdir -p /var/www/vhosts/new-website.tld/logs
+sudo mkdir -p /var/www/vhosts/new-website.tld/ssl
 ```
 
 ### User groups and roles
