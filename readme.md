@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document is step-by-step tutorial of really basic installation process of LEMP. I wrote it for myself, but feel free to use it. The LEMP consists of:
+This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
 
 - Nginx
 - PHP7
