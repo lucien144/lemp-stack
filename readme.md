@@ -20,7 +20,7 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
     - [try new user](#try-new-user)
     - [add authorized keys for that user](#add-authorized-keys-for-that-user)
     - [Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."](#fix-locale-if-you-are-getting-warning-your-environment-specifies-an-invalid-locale)
-    - [Update APT](#update-apt)
+    - [Configure & Update APT](#configure-&-update-apt)
     - [Install essentials](#install-essentials)
     - [Install Nginx](#install-nginx)
     - [Install MariaDB](#install-mariadb)
@@ -87,9 +87,11 @@ sudo nano /etc/environment
 ```
 
 
-### Update APT
+### Configure & Update APT
 ```sh
 sudo apt-get update ; sudo apt-get upgrade
+sudo apt-get install python-software-properties
+sudo apt-get install software-properties-common
 ```
 
 
@@ -102,6 +104,8 @@ sudo apt-get install htop
 
 ### Install Nginx
 ```sh
+sudo add-apt-repository ppa:gwibber-daily/ppa
+sudo apt-get update
 sudo apt-get install nginx
 ```
 
@@ -116,8 +120,6 @@ sudo mysql_secure_installation
 
 ### Install PHP7
 ```sh
-sudo apt-get install python-software-properties
-sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install php7.0
