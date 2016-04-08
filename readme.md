@@ -162,7 +162,7 @@ sudo passwd new-website
 ### Update permissions
 ```sh
 sudo chown -R new-website:new-website /var/www/vhosts/new-website.tld
-sudo chmod -R 0775 /var/www/vhosts/new-website.tld
+sudo chmod -R 0744 /var/www/vhosts/new-website.tld
 ```
 
 ### Create new PHP-FPM pool for new site
@@ -215,7 +215,7 @@ server {
     error_log /var/www/vhosts/new-site.tld/logs/error.log warn;
 
     location ~ \.php$ {
-        try_files $uri =404;
+        try_files $uri $uri/ /index.php?$args;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/var/run/php/php7.0-fpm-new-site.sock;
         fastcgi_index index.php;
