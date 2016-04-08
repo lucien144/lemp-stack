@@ -258,6 +258,8 @@ sudo mysql -u root -p
 - [ ] Create ISO
 - [ ] NPM
 - [ ] Bower?
+- [ ] s3cmd
+- [ ] automysqlbackup
 
 
 ## Reference
