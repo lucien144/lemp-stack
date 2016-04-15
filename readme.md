@@ -241,6 +241,13 @@ sudo mysql -u root -p
 > FLUSH PRIVILEGES;
 ```
 
+## Others
+
+### Git
+```
+sudo apt-get install git
+```
+
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
@@ -251,7 +258,7 @@ sudo mysql -u root -p
 - [x] directory schema
 - [ ] FTP
 - [x] User groups
-- [ ] git
+- [x] git
 - [ ] composer
 - [ ] bower
 - [ ] Let's encrypt (?)
