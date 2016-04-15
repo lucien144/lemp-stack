@@ -159,22 +159,7 @@ sudo useradd -g new-website -d /var/www/vhosts/new-website.tld new-website
 sudo passwd new-website
 ```
 
-### Allow admin user to login as new user
-```sh
-sudo nano /etc/pam.d/su
-```
-
-Add this after pam_rootok.so line:
-
-```sh
-auth       [success=ignore default=1] pam_succeed_if.so user = admin
-auth       sufficient   pam_succeed_if.so use_uid user = new-website
-```
-
-Now you can switch users by 
-```sh
-sudo su - new-website
-```
+You can switch users by using `sudo su - new-website`
 
 
 ### Update permissions
@@ -287,7 +272,7 @@ sudo apt-get install git
 - [ ] automysqlbackup
 
 
-## References
+## Reference
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration
@@ -300,8 +285,7 @@ sudo apt-get install git
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
-- http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu
-- http://unix.stackexchange.com/questions/113754/allow-user1-to-su-user2-without-password
+- http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu- 
 
 ## License
 
