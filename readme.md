@@ -87,6 +87,12 @@ sudo nano /etc/environment
 ```
 
 
+### Sett the correct timezone
+```sh
+sudo dpkg-reconfigure tzdata
+```
+
+
 ### Configure & Update APT
 ```sh
 sudo apt-get update ; sudo apt-get upgrade
