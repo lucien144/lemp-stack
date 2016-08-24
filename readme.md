@@ -292,6 +292,7 @@ sudo apt-get install git
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
 - http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu- 
+- https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
 
 ## License
 
