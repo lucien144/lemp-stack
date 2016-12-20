@@ -165,7 +165,7 @@ You can switch users by using `sudo su - new-website`
 ### Update permissions
 ```sh
 sudo chown -R new-website:new-website /var/www/vhosts/new-website.tld
-sudo chmod -R 0744 /var/www/vhosts/new-website.tld
+sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 ```
 
 ### Create new PHP-FPM pool for new site
@@ -251,6 +251,26 @@ sudo mysql -u root -p
 sudo apt-get install git
 ```
 
+### Postfix (sending emails from PHP)
+
+In case you cannot send emails from PHP and getting error (`tail /var/log/mail.log`) `Network is unreachable`, you need to switch Postfix from IPv6 to IPv6.
+
+```
+sudo apt-get install postfix
+sudo nano /etc/postfix/main.cf
+```
+
+Now change the line `inet_protocols = all` to `inet_protocols = ipv4` and restart postfix by `sudo /etc/init.d/postfix restart`.
+
+You can also check if you have opened port 25 by `netstat -nutlap | grep 25`
+
+### Munin - WIP
+
+apt-get install munin-node
+apt-get install munin
+apache2-utils
+
+
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
@@ -270,6 +290,7 @@ sudo apt-get install git
 - [ ] Bower?
 - [ ] s3cmd
 - [ ] automysqlbackup
+- [x] postfix
 
 
 ## Reference
@@ -286,6 +307,7 @@ sudo apt-get install git
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
 - http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu- 
+- http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
 
 ## License
 
