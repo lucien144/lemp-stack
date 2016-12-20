@@ -1,5 +1,19 @@
 # Basic installation process of LEMP
 
+- [Basic installation process of LEMP](#basic-installation-process-of-lemp)
+  - [Overview](#overview)
+  - [Basic installation](#basic-installation)
+    - [Essentials - user, apt, essentials](#add-new-user)
+    - [Webserver - PHP7, MariaDB, Nginx, ...](#install-nginx)
+  - [Adding website](#add-new-website-configuring-php-&-nginx-&-mariadb)
+    - [User, permissions, structure...](#create-the-dir-structure-for-new-website)
+    - [PHP](#create-new-php-fpm-pool-for-new-site)#restart-php-fpm-and-check-its-running)
+    - [Nginx vhost](#create-new-vhost-for-nginx)
+    - [MariaDB (MySQL)](#mariadb-mysql)
+  - [Todo](#todo)
+  - [Reference](#reference)
+  - [License](#license)
+
 ## Overview
 
 This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
@@ -7,41 +21,6 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
 - Nginx
 - PHP7
 - MariaDB
-
-## Table of Contents
-
-- [Basic installation process of LEMP](#basic-installation-process-of-lemp)
-  - [Content](#content)
-  - [Overview](#overview)
-  - [Basic installation](#basic-installation)
-    - [add new user](#add-new-user)
-    - [allow su without password for this user](#allow-su-without-password-for-this-user)
-    - [Add on last line:](#add-on-last-line)
-    - [try new user](#try-new-user)
-    - [add authorized keys for that user](#add-authorized-keys-for-that-user)
-    - [Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."](#fix-locale-if-you-are-getting-warning-your-environment-specifies-an-invalid-locale)
-    - [Configure & Update APT](#configure-&-update-apt)
-    - [Install essentials](#install-essentials)
-    - [Install Nginx](#install-nginx)
-    - [Install MariaDB](#install-mariadb)
-    - [Install PHP7](#install-php7)
-    - [Choose and install PHP7 modules](#choose-and-install-php7-modules)
-    - [Check the installed PHP version](#check-the-installed-php-version)
-    - [Restart Nginx](#restart-nginx)
-  - [Add new website, configuring PHP & Nginx & MariaDB](#add-new-website-configuring-php-&-nginx-&-mariadb)
-    - [Create the dir structure for new website](#create-the-dir-structure-for-new-website)
-    - [User groups and roles](#user-groups-and-roles)
-    - [Update permissions](#update-permissions)
-    - [Create new PHP-FPM pool for new site](#create-new-php-fpm-pool-for-new-site)
-      - [Configure the new pool](#configure-the-new-pool)
-      - [Restart PHP fpm and check it's running](#restart-php-fpm-and-check-its-running)
-    - [Create new "vhost" for Nginx](#create-new-vhost-for-nginx)
-      - [Configure the vhost](#configure-the-vhost)
-      - [Enable the new vhost](#enable-the-new-vhost)
-    - [MariaDB (MySQL)](#mariadb-mysql)
-  - [Todo](#todo)
-  - [Reference](#reference)
-  - [License](#license)
 
 ## Basic installation
 
