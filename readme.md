@@ -1,18 +1,18 @@
 # Basic installation process of LEMP
 
-- [Basic installation process of LEMP](#basic-installation-process-of-lemp)
-  - [Overview](#overview)
-  - [Basic installation](#basic-installation)
-    - [Essentials - user, apt, essentials](#add-new-user)
-    - [Webserver - PHP7, MariaDB, Nginx, ...](#install-nginx)
-  - [Adding website](#add-new-website-configuring-php-&-nginx-&-mariadb)
-    - [User, permissions, structure...](#create-the-dir-structure-for-new-website)
-    - [PHP](#create-new-php-fpm-pool-for-new-site)#restart-php-fpm-and-check-its-running)
-    - [Nginx vhost](#create-new-vhost-for-nginx)
-    - [MariaDB (MySQL)](#mariadb-mysql)
-  - [Todo](#todo)
-  - [Reference](#reference)
-  - [License](#license)
+1. [Basic installation process of LEMP](#basic-installation-process-of-lemp)
+	1. [Overview](#overview)
+	1. [Essentials - user, apt, default apps](#essentials)
+		1. [Installation script](#installation-script)
+		1. [Manual installation](#manual-script)
+	1. [Webserver - PHP7, MariaDB, Nginx, ...](#webserver-installation)
+	1. [Adding website](#add-new-website-configuring-php-&-nginx-&-mariadb)
+		1. [User, permissions, structure...](#create-the-dir-structure-for-new-website)		1. [PHP](#create-new-php-fpm-pool-for-new-site)
+		1. [Nginx vhost](#create-new-vhost-for-nginx)
+		1. [MariaDB (MySQL)](#mariadb-mysql)
+	1. [Todo](#todo)
+	1. [Reference](#reference)
+	1. [License](#license)
 
 ## Overview
 
@@ -22,33 +22,37 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
 - PHP7
 - MariaDB
 
-## Basic installation
 
-### add new user
+## Essentials
+
+### Installation script
+
+To automatically install essentials, you can use the 👉 `startup.sh` script.
+
+### Manual installation
+
+If you want to have the installation in your hands, follow the manual installation. 👇
+
+#### add new user
 ```sh
 adduser admin
 ```
 
 
-### allow su without password for this user
+#### allow su without password for this user
 ```sh
-visudo
-```
-
-### Add on last line:
-```sh
-admin    ALL=(ALL) NOPASSWD:ALL
+echo "admin    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 ```
 
 
-### try new user
+#### try new user
 ```sh
 su - admin
 exit
 ```
 
 
-### add authorized keys for that user
+#### add authorized keys for that user
 ```sh
 su - admin
 mkdir .ssh
@@ -57,8 +61,14 @@ chmod 700 .ssh/
 chmod 600 .ssh/authorized_keys
 ```
 
+#### disable password login for current user
+```sh
+# Optional
+echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+```
 
-### Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."
+
+#### Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."
 ```sh
 sudo nano /etc/environment
 # Add: LC_ALL="en_US.UTF-8"
@@ -66,7 +76,7 @@ sudo nano /etc/environment
 ```
 
 
-### Configure & Update APT
+#### Configure & Update APT
 ```sh
 sudo apt-get update ; sudo apt-get upgrade
 sudo apt-get install python-software-properties
@@ -74,12 +84,24 @@ sudo apt-get install software-properties-common
 ```
 
 
-### Install essentials
+#### Install essentials
 ```sh
 sudo apt-get install mc
 sudo apt-get install htop
 ```
 
+#### Setup and configure Firewall
+
+Open SSH port only.
+
+```sh
+ufw allow OpenSSH
+yes | ufw enable
+ufw app list
+```
+
+
+## Webserver installation
 
 ### Install Nginx
 ```sh
@@ -258,15 +280,13 @@ apache2-utils
 - [ ] adminer
 - [ ] script for creating new vhost
 - [x] directory schema
-- [ ] FTP
+- [ ] FTP?
 - [x] User groups
 - [x] git
 - [ ] composer
-- [ ] bower
 - [ ] Let's encrypt (?)
 - [ ] Create ISO
 - [ ] NPM
-- [ ] Bower?
 - [ ] s3cmd
 - [ ] automysqlbackup
 - [x] postfix
