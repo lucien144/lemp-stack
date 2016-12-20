@@ -76,7 +76,13 @@ sudo nano /etc/environment
 ```
 
 
-#### Configure & Update APT
+### Sett the correct timezone
+```sh
+sudo dpkg-reconfigure tzdata
+```
+
+
+### Configure & Update APT
 ```sh
 sudo apt-get update ; sudo apt-get upgrade
 sudo apt-get install python-software-properties
@@ -307,6 +313,7 @@ apache2-utils
 - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
 - http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu- 
 - http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
+- https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
 
 ## License
 
