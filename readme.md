@@ -127,7 +127,8 @@ sudo mysql_secure_installation
 
 ### Install PHP7
 ```sh
-sudo add-apt-repository ppa:ondrej/php
+# For Ubuntu < 16.04
+# sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install php7.0
 ```
@@ -311,7 +312,7 @@ apache2-utils
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-12-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
-- http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu- 
+- http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu-
 - http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
 - https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
 
