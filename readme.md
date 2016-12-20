@@ -111,7 +111,7 @@ ufw app list
 
 ### Install Nginx
 ```sh
-sudo add-apt-repository ppa:gwibber-daily/ppa
+sudo add-apt-repository ppa:nginx/development
 sudo apt-get update
 sudo apt-get install nginx
 ```
