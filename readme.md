@@ -102,9 +102,11 @@ sudo apt-get install htop
 Open SSH port only.
 
 ```sh
-ufw allow OpenSSH
-yes | ufw enable
-ufw app list
+sudo ufw allow OpenSSH
+sudo ufw allow http
+sudo ufw allow https
+yes | sudo ufw enable
+sudo ufw app list
 ```
 
 
