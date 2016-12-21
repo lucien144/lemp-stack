@@ -28,6 +28,7 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
 ### Installation script
 
 To automatically install essentials, you can use the 👉 `startup.sh` script.
+The file is deleted automatically.
 
 ### Manual installation
 
@@ -139,7 +140,7 @@ sudo apt-get install php7.0
 ### Choose and install PHP7 modules
 ```sh
 sudo apt-cache search php7-*
-sudo apt-get install php7.0-curl php7.0-gd php7.0-mcrypt php7.0-sqlite3 php7.0-mysql php7.0-bz2 php7.0-mbstrin php7.0-soap php7.0-xml php7.0-zip
+sudo apt-get install php7.0-fpm php7.0-mysql php7.0-curl php7.0-gd php7.0-mcrypt php7.0-sqlite3 php7.0-bz2 php7.0-mbstrin php7.0-soap php7.0-xml php7.0-zip
 ```
 
 
@@ -155,14 +156,17 @@ sudo service nginx restart ; sudo systemctl status nginx.service
 
 ## Add new website, configuring PHP & Nginx & MariaDB
 
-### Create the dir structure for new website
+Steps 1. - 9. can be skipped by calling the `add-vhost.sh`. Just download `add-vhost.sh`, `chmod a+x ./add-vhost.sh` and call it `sudo ./add-vhost.sh`.
+The file is deleted automatically.
+
+### 1. Create the dir structure for new website
 ```sh
 sudo mkdir -p /var/www/vhosts/new-website.tld/web
 sudo mkdir -p /var/www/vhosts/new-website.tld/logs
 sudo mkdir -p /var/www/vhosts/new-website.tld/ssl
 ```
 
-### User groups and roles
+### 2. User groups and roles
 ```sh
 sudo groupadd new-website
 sudo useradd -g new-website -d /var/www/vhosts/new-website.tld new-website
@@ -172,18 +176,18 @@ sudo passwd new-website
 You can switch users by using `sudo su - new-website`
 
 
-### Update permissions
+### 3. Update permissions
 ```sh
 sudo chown -R new-website:new-website /var/www/vhosts/new-website.tld
 sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 ```
 
-### Create new PHP-FPM pool for new site
+### 4. Create new PHP-FPM pool for new site
 ```sh
 sudo nano /etc/php/7.0/fpm/pool.d/new-website.tld.conf
 ```
 
-#### Configure the new pool
+#### 5. Configure the new pool
 ```sh
 [new-website]
 user = new-website
@@ -201,18 +205,18 @@ pm.max_spare_servers = 3
 chdir = /
 ```
 
-#### Restart PHP fpm and check it's running
+#### 6. Restart PHP fpm and check it's running
 ```sh
 sudo service php7.0-fpm restart
 ps aux | grep new-site
 ```
 
-### Create new "vhost" for Nginx
+### 7. Create new "vhost" for Nginx
 ```sh
 sudo nano /etc/nginx/sites-available/new-site.tld
 ```
 
-#### Configure the vhost
+#### 8. Configure the vhost
 ```sh
 server {
     listen 80;
@@ -238,14 +242,14 @@ server {
 }
 ```
 
-#### Enable the new vhost
+#### 9. Enable the new vhost
 ```
 cd /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/new-site.tld new-site.tld
 sudo service nginx restart ; sudo systemctl status nginx.service
 ```
 
-### MariaDB (MySQL)
+### 10. MariaDB (MySQL)
 ```sh
 sudo mysql -u root -p
 > CREATE DATABASE newwebsite_tld;

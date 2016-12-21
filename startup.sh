@@ -44,3 +44,5 @@ ufw app list
 
 # See disk space
 df -h
+
+rm ./startup.sh
