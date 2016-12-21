@@ -27,7 +27,7 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
 
 ### Installation script
 
-To automatically install essentials, you can use the 👉 `startup.sh` script.
+To automatically install essentials, you can use the 👉 `startup.sh` script by downloading it and calling it with sudo `sudo ./startup.sh`.
 The file is deleted automatically.
 
 ### Manual installation
@@ -62,17 +62,17 @@ chmod 700 .ssh/
 chmod 600 .ssh/authorized_keys
 ```
 
-#### disable password login for current user
+#### disable password login for all users
 ```sh
 # Optional
-echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+# sudo echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+# sudo systemctl reload sshd
 ```
 
 
 #### Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."
 ```sh
-sudo nano /etc/environment
-# Add: LC_ALL="en_US.UTF-8"
+sudo echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
 # Log out & in
 ```
 
