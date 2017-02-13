@@ -200,11 +200,33 @@ listen.group = www-data
 php_admin_value[disable_functions] = exec,passthru,shell_exec,system
 php_admin_flag[allow_url_fopen] = off
 pm = dynamic
-pm.max_children = 5
-pm.start_servers = 2
-pm.min_spare_servers = 1
-pm.max_spare_servers = 3
+pm.max_children = 5 # The hard-limit total number of processes allowed
+pm.start_servers = 2 # When nginx starts, have this many processes waiting for requests
+pm.min_spare_servers = 1 # Number spare processes nginx will create
+pm.max_spare_servers = 3 # Number spare processes attempted to create
+pm.max_requests = 500
 chdir = /
+```
+
+##### 5.1 Configuring `pm.max_children`
+1. Find how much RAM FPM consumes: `ps -A -o pid,rss,command | grep php-fpm` -> second row in bytes
+    1. Reference: [https://overloaded.io/finding-process-memory-usage-linux](https://overloaded.io/finding-process-memory-usage-linux)
+2. Eg. ~43904 / 1024 -> ~43MB per one process
+3. Calculation: If server has 2GB RAM, let's say PHP can consume 1GB (with some buffer, otherwise we can use 1.5GB): 1024MB / 43MB -> ~30MB -> pm.max_childern = 30
+
+##### 5.2 Configuring `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`
+1. `pm.start_servers` == number of CPUs
+1. `pm.min_spare_servers` = `pm.start_servers` / 2
+1. `pm.max_spare_servers` = `pm.start_servers` * 3
+
+##### 5.3 Configure `/etc/nginx/nginx.conf`
+```
+worker_processes auto;
+events {
+        use epoll;
+        worker_connections 1024; # ~ RAM / 2
+        multi_accept on;
+}
 ```
 
 #### 6. Restart PHP fpm and check it's running
@@ -323,6 +345,14 @@ apache2-utils
 - http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu-
 - http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
 - https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
+
+### Setting PHP-FPM
+ - https://www.if-not-true-then-false.com/2011/nginx-and-php-fpm-configuration-and-optimizing-tips-and-tricks/
+ - http://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/
+ - https://jeremymarc.github.io/2013/04/22/nginx-and-php-fpm-for-performance
+ - http://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/
+ - https://serversforhackers.com/video/php-fpm-process-management
+ - https://overloaded.io/finding-process-memory-usage-linux
 
 ## License
 
