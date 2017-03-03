@@ -308,6 +308,22 @@ apt-get install munin-node
 apt-get install munin
 apache2-utils
 
+### Rabbitmq
+
+```
+echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+sudo service rabbitmq-server status
+sudo rabbitmq-plugins enable rabbitmq_management
+sudo ufw allow 15672
+sudo rabbitmqctl add_user admin ********* 
+sudo rabbitmqctl set_user_tags admin administrator 
+sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+sudo rabbitmqctl delete_user guest
+sudo service rabbitmq-server restart
+```
 
 ## Todo
 - [ ] better vhost permissions for reading for other users
