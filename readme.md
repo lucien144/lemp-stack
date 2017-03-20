@@ -5,7 +5,7 @@
 	1. [Essentials - user, apt, default apps](#essentials)
 		1. [Installation script](#installation-script)
 		1. [Manual installation](#manual-script)
-	1. [Webserver - PHP7, MariaDB, Nginx, ...](#webserver-installation)
+	1. [Webserver - PHP7.1, MariaDB, Nginx, ...](#webserver-installation)
 	1. [Adding website](#add-new-website-configuring-php-&-nginx-&-mariadb)
 		1. [User, permissions, structure...](#create-the-dir-structure-for-new-website)		1. [PHP](#create-new-php-fpm-pool-for-new-site)
 		1. [Nginx vhost](#create-new-vhost-for-nginx)
@@ -16,10 +16,10 @@
 
 ## Overview
 
-This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
+This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.1. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
 
 - Nginx
-- PHP7
+- PHP7.1
 - MariaDB
 
 
@@ -130,19 +130,18 @@ sudo mysql_secure_installation
 ```
 
 
-### Install PHP7
+### Install PHP7.1
 ```sh
-# For Ubuntu < 16.04
-# sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt-get install php7.0
+sudo apt-get install php7.1
 ```
 
 
-### Choose and install PHP7 modules
+### Choose and install PHP7.1 modules
 ```sh
-sudo apt-cache search php7-*
-sudo apt-get install php7.0-fpm php7.0-mysql php7.0-curl php7.0-gd php7.0-mcrypt php7.0-sqlite3 php7.0-bz2 php7.0-mbstrin php7.0-soap php7.0-xml php7.0-zip
+sudo apt-cache search php7.1-*
+sudo apt-get install php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mcrypt php7.1-sqlite3 php7.1-bz2 php7.1-mbstrin php7.1-soap php7.1-xml php7.1-zip
 ```
 
 
