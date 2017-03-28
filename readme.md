@@ -332,7 +332,6 @@ sudo service rabbitmq-server restart
 - [ ] adminer
 - [ ] script for creating new vhost
 - [x] directory schema
-- [ ] FTP?
 - [x] User groups
 - [x] git
 - [ ] composer
@@ -342,6 +341,9 @@ sudo service rabbitmq-server restart
 - [ ] s3cmd
 - [ ] automysqlbackup
 - [x] postfix
+- [ ] SSH/SFTP jail? 
+    - https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
+    - `makejail`
 
 
 ## Reference
