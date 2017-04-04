@@ -301,9 +301,65 @@ Now change the line `inet_protocols = all` to `inet_protocols = ipv4` and restar
 
 You can also check if you have opened port 25 by `netstat -nutlap | grep 25`
 
-### Munin - WIP
+### Munin
 
-`apt-get install munin-node  munin apache2-utils`
+#### 1. Install
+`apt-get install munin-node  munin`
+
+#### 2. Configure Munin
+1. Uncomment `#host 127.0.0.1` in `/etc/munin/munin-node.conf`
+1. Append following code to `/etc/munin/munin-node.conf`
+
+```
+[nginx*]
+env.url http://localhost/nginx_status
+```
+
+#### 3. Configure nginx `/etc/nginx/sites-available/default`
+```
+sudo nano /etc/nginx/sites-available/default
+# Change listen 80 default_server; to
+listen 80
+
+#Change listen [::]:80 default_server; to
+listen [::]:80
+
+# Add settings for stub status to server {}
+    location /nginx_status {
+        stub_status on;
+        access_log off;
+        allow 127.0.0.1;
+        deny all;
+    }
+
+# Add setting to access stats online
+
+    location /stats {
+        allow YOUR.IP.ADDRESS;
+        deny all;
+        alias /var/cache/munin/www/;
+    }
+```
+
+#### 4. Install [plugins](https://www.github.com/munin-monitoring/contrib/)
+
+```
+cd /usr/share/munin/plugins
+sudo wget -O nginx_connection_request https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_connection_request
+sudo wget -O nginx_status https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_status
+sudo wget -O nginx_memory https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_memory 
+
+sudo chmod +x nginx_request
+sudo chmod +x nginx_status
+sudo chmod +x nginx_memory    
+
+sudo ln -s /usr/share/munin/plugins/nginx_request /etc/munin/plugins/nginx_request
+sudo ln -s /usr/share/munin/plugins/nginx_status /etc/munin/plugins/nginx_status
+sudo ln -s /usr/share/munin/plugins/nginx_memory /etc/munin/plugins/nginx_memory
+```
+
+#### Restart Munin
+`sudo service munin-node restart`
 
 ### Rabbitmq
 
@@ -331,7 +387,7 @@ sudo service rabbitmq-server restart
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
 - [x] php-fpm settings
-- [ ] munin
+- [x] munin
 - [ ] adminer
 - [ ] script for creating new vhost
 - [x] directory schema
@@ -365,6 +421,7 @@ sudo service rabbitmq-server restart
 - http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu-
 - http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
 - https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
+- https://github.com/jnstq/munin-nginx-ubuntu
 
 ### Setting PHP-FPM
  - https://www.if-not-true-then-false.com/2011/nginx-and-php-fpm-configuration-and-optimizing-tips-and-tricks/
