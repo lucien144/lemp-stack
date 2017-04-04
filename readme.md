@@ -1,5 +1,7 @@
 # Basic installation process of LEMP
 
+**Last update**: 4/4/2017, tested on Ubuntu 16.10
+
 1. [Basic installation process of LEMP](#basic-installation-process-of-lemp)
 	1. [Overview](#overview)
 	1. [Essentials - user, apt, default apps](#essentials)
@@ -193,7 +195,7 @@ sudo nano /etc/php/7.0/fpm/pool.d/new-website.tld.conf
 [new-website]
 user = new-website
 group = new-website
-listen = /run/php/php7.0-fpm-new-website.sock
+listen = /run/php/php7.1-fpm-new-website.sock
 listen.owner = www-data
 listen.group = www-data
 php_admin_value[disable_functions] = exec,passthru,shell_exec,system
@@ -230,7 +232,7 @@ events {
 
 #### 6. Restart PHP fpm and check it's running
 ```sh
-sudo service php7.0-fpm restart
+sudo service php7.1-fpm restart
 ps aux | grep new-site
 ```
 
@@ -257,7 +259,7 @@ server {
     location ~ \.php$ {
         try_files $uri $uri/ /index.php?$args;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.0-fpm-new-site.sock;
+        fastcgi_pass unix:/var/run/php/php7.1-fpm-new-site.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
