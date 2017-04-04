@@ -363,6 +363,13 @@ sudo ln -s /usr/share/munin/plugins/nginx_memory /etc/munin/plugins/nginx_memory
 
 ### Rabbitmq
 
+Install PHP extension
+```
+sudo apt-get install php-amqp
+```
+
+Install RabbitMQ
+
 ```
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
