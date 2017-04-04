@@ -303,9 +303,7 @@ You can also check if you have opened port 25 by `netstat -nutlap | grep 25`
 
 ### Munin - WIP
 
-apt-get install munin-node
-apt-get install munin
-apache2-utils
+`apt-get install munin-node  munin apache2-utils`
 
 ### Rabbitmq
 
