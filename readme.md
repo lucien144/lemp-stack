@@ -322,6 +322,11 @@ sudo rabbitmqctl delete_user guest
 sudo service rabbitmq-server restart
 ```
 
+#### Installing plugin
+1. Download the `.ez` plugin to `/usr/lib/rabbitmq/lib/rabbitmq_server-{version}/plugins`
+1. Enable the plugin by `sudo rabbitmq-plugins enable {plugin name}`
+
+
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
