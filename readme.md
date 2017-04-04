@@ -164,9 +164,7 @@ The file is deleted automatically.
 
 ### 1. Create the dir structure for new website
 ```sh
-sudo mkdir -p /var/www/vhosts/new-website.tld/web
-sudo mkdir -p /var/www/vhosts/new-website.tld/logs
-sudo mkdir -p /var/www/vhosts/new-website.tld/ssl
+sudo mkdir -p /var/www/vhosts/new-website.tld/{web,logs,ssl}
 ```
 
 ### 2. User groups and roles
