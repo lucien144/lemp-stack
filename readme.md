@@ -389,6 +389,20 @@ sudo service rabbitmq-server restart
 1. Download the `.ez` plugin to `/usr/lib/rabbitmq/lib/rabbitmq_server-{version}/plugins`
 1. Enable the plugin by `sudo rabbitmq-plugins enable {plugin name}`
 
+### Supervisor
+
+`sudo apt-get install supervisor`
+
+### Node.js & NPM
+```
+sudo apt-get install nodejs
+sudo apt-get install npm
+```
+
+If you are getting error `/usr/bin/env: ‘node’: No such file or directory` run
+```
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
 
 ## Todo
 - [ ] better vhost permissions for reading for other users
