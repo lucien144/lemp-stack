@@ -347,7 +347,7 @@ listen [::]:80
 cd /usr/share/munin/plugins
 sudo wget -O nginx_connection_request https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_connection_request
 sudo wget -O nginx_status https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_status
-sudo wget -O nginx_memory https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_memory 
+sudo wget -O nginx_memory https://raw.github.com/munin-monitoring/contrib/master/plugins/nginx/nginx_memory
 
 sudo chmod +x nginx_request
 sudo chmod +x nginx_status
@@ -378,8 +378,8 @@ sudo apt-get install rabbitmq-server
 sudo service rabbitmq-server status
 sudo rabbitmq-plugins enable rabbitmq_management
 sudo ufw allow 15672
-sudo rabbitmqctl add_user admin ********* 
-sudo rabbitmqctl set_user_tags admin administrator 
+sudo rabbitmqctl add_user admin *********
+sudo rabbitmqctl set_user_tags admin administrator
 sudo rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
 sudo rabbitmqctl delete_user guest
 sudo service rabbitmq-server restart
@@ -404,6 +404,20 @@ If you are getting error `/usr/bin/env: ‘node’: No such file or directory` r
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
+### Let's Encrypt
+```
+apt-get -y install letsencrypt
+letsencrypt certonly -a webroot --webroot-path=/var/www/thebuttongame.io/web -d thebuttongame.io -d www.thebuttongame.io
+```
+
+```
+# Allow Let's Encrypt authorization
+location ~ /.well-known {
+  allow all;
+}
+```
+
+
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
@@ -412,18 +426,18 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 - [ ] adminer
 - [ ] script for creating new vhost
 - [x] directory schema
-- [x] User groups
+- [x] sser groups
 - [x] git
 - [ ] composer
 - [ ] Let's encrypt (?)
-- [ ] Create ISO
-- [ ] NPM
+- [x] NPM
 - [ ] s3cmd
 - [ ] automysqlbackup
 - [x] postfix
-- [ ] SSH/SFTP jail? 
+- [ ] SSH/SFTP jail (?)
     - https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
     - `makejail`
+- [ ] Fail2Ban (?)
 
 
 ## Reference
@@ -443,6 +457,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 - http://ithelpblog.com/itapplications/howto-fix-postfixsmtp-network-is-unreachable-error/
 - https://www.digitalocean.com/community/tutorials/how-to-create-hot-backups-of-mysql-databases-with-percona-xtrabackup-on-ubuntu-14-04
 - https://github.com/jnstq/munin-nginx-ubuntu
+- https://letsecure.me/secure-web-deployment-with-lets-encrypt-and-nginx/
 
 ### Setting PHP-FPM
  - https://www.if-not-true-then-false.com/2011/nginx-and-php-fpm-configuration-and-optimizing-tips-and-tricks/
