@@ -173,7 +173,7 @@ admin@server:~$ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack
 ```
 
 ```sh
-admin@server:~$ sudo service nginx restart ; sudo systemctl status nginx.service
+admin@server:~$ sudo nginx -t && sudo nginx -s reload
 ```
 
 ## Add new website, configuring PHP & Nginx & MariaDB
@@ -285,7 +285,7 @@ server {
 ```
 cd /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/new-site.tld new-site.tld
-sudo service nginx restart ; sudo systemctl status nginx.service
+sudo nginx -t && sudo nginx -s reload
 ```
 
 ### 10. MariaDB (MySQL)
