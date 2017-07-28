@@ -303,6 +303,21 @@ sudo mysql -u root -p
 sudo apt-get install git
 ```
 
+### Adminer
+
+[Adminer](https://www.adminer.org) is a mostly MySQL database management tool. It's really tiny, simple & easy to use.
+
+```
+admin@server:~$ cd /etc/nginx/conf.d/server/
+admin@server:~$ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/4-adminer.conf
+admin@server:~$ sudo mkdir -p /var/www/html/adminer/
+admin@server:~$ cd /var/www/html/adminer/
+admin@server:~$ sudo wget https://www.adminer.org/latest.php -O index.php
+admin@server:~$ sudo a+x index.php
+admin@server:~$ sudo htpasswd -c .htpasswd user
+admin@server:~$ sudo nginx -t && sudo nginx -s reload
+```
+
 ### Postfix (sending emails from PHP)
 
 In case you cannot send emails from PHP and getting error (`tail /var/log/mail.log`) `Network is unreachable`, you need to switch Postfix from IPv6 to IPv6.
@@ -438,7 +453,7 @@ location ~ /.well-known {
 - [ ] better description of nginx configuration
 - [x] php-fpm settings
 - [x] munin
-- [ ] adminer
+- [x] adminer
 - [ ] script for creating new vhost
 - [x] directory schema
 - [x] sser groups
