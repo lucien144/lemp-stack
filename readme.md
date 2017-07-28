@@ -152,15 +152,41 @@ sudo apt-get install php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mcrypt
 php -v
 ```
 
-### Restart Nginx
+### Configure Nginx
+
+#### Configure `/etc/nginx/nginx.conf`
 ```sh
-sudo service nginx restart ; sudo systemctl status nginx.service
+worker_processes auto;
+events {
+        use epoll;
+        worker_connections 1024; # ~ RAM / 2
+        multi_accept on;
+}
+```
+
+#### Setup default settings for all virtual hosts
+
+```sh
+admin@server:~$ sudo mkdir -p /etc/nginx/conf.d/server/
+admin@server:~$ sudo cd /etc/nginx/conf.d/server/
+admin@server:~$ sudo cd wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
+```
+
+```sh
+admin@server:~$ sudo service nginx restart ; sudo systemctl status nginx.service
 ```
 
 ## Add new website, configuring PHP & Nginx & MariaDB
 
-Steps 1. - 9. can be skipped by calling the `add-vhost.sh`. Just download `add-vhost.sh`, `chmod a+x ./add-vhost.sh` and call it `sudo ./add-vhost.sh`.
+Steps 1. - 9. can be skipped by calling the `add-vhost.sh`. Just download `add-vhost.sh`, `chmod u+x ./add-vhost.sh` and call it `sudo ./add-vhost.sh`.
 The file is deleted automatically.
+
+```sh
+admin@server:~$ cd ~
+admin@server:~$ wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/add-vhost.sh
+admin@server:~$ chmod u+x add-vhost.sh
+admin@server:~$ sudo ./add-vhost.sh
+```
 
 ### 1. Create the dir structure for new website
 ```sh
@@ -217,16 +243,6 @@ chdir = /
 1. `pm.start_servers` == number of CPUs
 1. `pm.min_spare_servers` = `pm.start_servers` / 2
 1. `pm.max_spare_servers` = `pm.start_servers` * 3
-
-##### 5.3 Configure `/etc/nginx/nginx.conf`
-```
-worker_processes auto;
-events {
-        use epoll;
-        worker_connections 1024; # ~ RAM / 2
-        multi_accept on;
-}
-```
 
 #### 6. Restart PHP fpm and check it's running
 ```sh
