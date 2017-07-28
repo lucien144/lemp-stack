@@ -451,23 +451,14 @@ location ~ /.well-known {
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
-- [x] php-fpm settings
-- [x] munin
-- [x] adminer
 - [ ] script for creating new vhost
-- [x] directory schema
-- [x] sser groups
-- [x] git
 - [ ] composer
 - [ ] Let's encrypt (?)
-- [x] NPM
 - [ ] s3cmd
 - [ ] automysqlbackup
-- [x] postfix
 - [ ] SSH/SFTP jail (?)
     - https://www.linode.com/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu
     - `makejail`
-- [ ] Fail2Ban (?)
 
 
 ## Reference
