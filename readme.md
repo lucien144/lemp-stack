@@ -166,13 +166,13 @@ events {
 #### Setup default settings for all virtual hosts
 
 ```sh
-admin@server:~$ sudo mkdir -p /etc/nginx/conf.d/server/
-admin@server:~$ sudo cd /etc/nginx/conf.d/server/
-admin@server:~$ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
+sudo mkdir -p /etc/nginx/conf.d/server/
+sudo cd /etc/nginx/conf.d/server/
+sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
 ```
 
 ```sh
-admin@server:~$ sudo nginx -t && sudo nginx -s reload
+sudo nginx -t && sudo nginx -s reload
 ```
 
 ## Add new website, configuring PHP & Nginx & MariaDB
@@ -181,10 +181,10 @@ Steps 1. - 9. can be skipped by calling the `add-vhost.sh`. Just download `add-v
 The file is deleted automatically.
 
 ```sh
-admin@server:~$ cd ~
-admin@server:~$ wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/add-vhost.sh
-admin@server:~$ chmod u+x add-vhost.sh
-admin@server:~$ sudo ./add-vhost.sh
+cd ~
+wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/add-vhost.sh
+chmod u+x add-vhost.sh
+sudo ./add-vhost.sh
 ```
 
 ### 1. Create the dir structure for new website
@@ -308,14 +308,14 @@ sudo apt-get install git
 [Adminer](https://www.adminer.org) is a mostly MySQL database management tool. It's really tiny, simple & easy to use.
 
 ```
-admin@server:~$ cd /etc/nginx/conf.d/server/
-admin@server:~$ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/4-adminer.conf
-admin@server:~$ sudo mkdir -p /var/www/html/adminer/
-admin@server:~$ cd /var/www/html/adminer/
-admin@server:~$ sudo wget https://www.adminer.org/latest.php -O index.php
-admin@server:~$ sudo a+x index.php
-admin@server:~$ sudo htpasswd -c .htpasswd user
-admin@server:~$ sudo nginx -t && sudo nginx -s reload
+cd /etc/nginx/conf.d/server/
+sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/4-adminer.conf
+sudo mkdir -p /var/www/html/adminer/
+cd /var/www/html/adminer/
+sudo wget https://www.adminer.org/latest.php -O index.php
+sudo a+x index.php
+sudo htpasswd -c .htpasswd user
+sudo nginx -t && sudo nginx -s reload
 ```
 
 ### Postfix (sending emails from PHP)
