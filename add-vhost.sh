@@ -12,7 +12,7 @@ passwd $HOST
 chown -R $HOST:$HOST /var/www/vhosts/$HOST.$DOMAIN
 chmod -R 0775 /var/www/vhosts/$HOST.$DOMAIN
 
-touch /etc/php/7.0/fpm/pool.d/$HOST.$DOMAIN.conf
+touch /etc/php/7.1/fpm/pool.d/$HOST.$DOMAIN.conf
 
 echo "[$HOST]
 user = $HOST
@@ -27,7 +27,7 @@ pm.max_children = 5
 pm.start_servers = 2
 pm.min_spare_servers = 1
 pm.max_spare_servers = 3
-chdir = /" >> /etc/php/7.0/fpm/pool.d/$HOST.$DOMAIN.conf
+chdir = /" >> /etc/php/7.1/fpm/pool.d/$HOST.$DOMAIN.conf
 
 service php7.1-fpm restart
 ps aux | grep $HOST

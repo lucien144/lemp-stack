@@ -185,7 +185,7 @@ sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 
 ### 4. Create new PHP-FPM pool for new site
 ```sh
-sudo nano /etc/php/7.0/fpm/pool.d/new-website.tld.conf
+sudo nano /etc/php/7.1/fpm/pool.d/new-website.tld.conf
 ```
 
 #### 5. Configure the new pool
