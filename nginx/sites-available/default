@@ -5,4 +5,5 @@ server {
 	root /var/www/html;
 	server_name _;
 	include /etc/nginx/conf.d/server/*.conf;
+	include /etc/nginx/conf.d/*.conf;
 }

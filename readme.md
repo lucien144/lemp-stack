@@ -163,6 +163,16 @@ events {
 }
 ```
 
+#### Default vhost
+
+```sh
+cd /etc/nginx/sites-available
+sudo rm default
+sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/sites-available/default
+cd /etc/nginx/conf.d
+sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/gzip.conf
+```
+
 #### Setup default settings for all virtual hosts
 
 ```sh
@@ -170,6 +180,8 @@ sudo mkdir -p /etc/nginx/conf.d/server/
 sudo cd /etc/nginx/conf.d/server/
 sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
 ```
+
+#### Reload Nginx
 
 ```sh
 sudo nginx -t && sudo nginx -s reload
