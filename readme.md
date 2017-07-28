@@ -87,9 +87,8 @@ sudo dpkg-reconfigure tzdata
 
 ### Configure & Update APT
 ```sh
-sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install python-software-properties
-sudo apt-get install software-properties-common
+sudo apt-get -y update ; sudo apt-get -y upgrade
+sudo apt-get -y install python-software-properties software-properties-common apache2-utils
 ```
 
 
