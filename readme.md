@@ -169,7 +169,7 @@ events {
 ```sh
 admin@server:~$ sudo mkdir -p /etc/nginx/conf.d/server/
 admin@server:~$ sudo cd /etc/nginx/conf.d/server/
-admin@server:~$ sudo cd wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
+admin@server:~$ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
 ```
 
 ```sh
