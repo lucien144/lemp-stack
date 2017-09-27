@@ -35,26 +35,33 @@ ps aux | grep $HOST
 touch /etc/nginx/sites-available/$HOST.$DOMAIN
 
 echo "server {
-    listen 80;
+	listen 80;
+	server_name $HOST.$DOMAIN;
+	location / {
+		return 301 http://www.$HOST.$DOMAIN$request_uri;
+	}
+}
+server {
+	listen 80;
 
-    root /var/www/vhosts/$HOST.$DOMAIN/web;
-    index index.php index.html index.htm;
+	root /var/www/vhosts/$HOST.$DOMAIN/web;
+	index index.php index.html index.htm;
 
-    server_name www.$HOST.$DOMAIN $HOST.$DOMAIN;
+	server_name www.$HOST.$DOMAIN;
 
-    include /etc/nginx/conf.d/server/1-common.conf;
+	include /etc/nginx/conf.d/server/1-common.conf;
 
-    access_log /var/www/vhosts/$HOST.$DOMAIN/logs/access.log;
-    error_log /var/www/vhosts/$HOST.$DOMAIN/logs/error.log warn;
+	access_log /var/www/vhosts/$HOST.$DOMAIN/logs/access.log;
+	error_log /var/www/vhosts/$HOST.$DOMAIN/logs/error.log warn;
 
-    location ~ \.php$ {
-        try_files \$uri \$uri/ /index.php?$args;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.1-fpm-$HOST.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-        include fastcgi_params;
-    }
+	location ~ \.php$ {
+		try_files \$uri \$uri/ /index.php?$args;
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass unix:/var/run/php/php7.1-fpm-$HOST.sock;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+		include fastcgi_params;
+	}
 }" >> /etc/nginx/sites-available/$HOST.$DOMAIN
 
 ln -s /etc/nginx/sites-available/$HOST.$DOMAIN /etc/nginx/sites-enabled/$HOST.$DOMAIN
