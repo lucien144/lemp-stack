@@ -1,4 +1,8 @@
 #!/bin/bash
+
+###
+# Please, place below your public key!
+###
 KEY="ssh-rsa ABC123== you@email.com"
 
 # Create admin user
@@ -29,18 +33,18 @@ echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
 
 # Essentials
 apt-get -y update ; apt-get -y upgrade
-apt-get -y install python-software-properties
-apt-get -y install software-properties-common
+apt-get -y install python-software-properties software-properties-common apache2-utils fail2ban
 apt-get -y install mc
 apt-get -y install htop
 
 # Setup simple Firewall
-# Open SSH access
-ufw allow OpenSSH
+ufw allow 22 #OpenSSH
+ufw allow 80 #http
+ufw allow 443 #https
 yes | ufw enable
 
 # Check Firewall settings
-ufw app list
+ufw status
 
 # See disk space
 df -h
