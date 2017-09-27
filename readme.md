@@ -115,9 +115,8 @@ sudo ufw status
 
 ### Install Nginx
 ```sh
-sudo add-apt-repository ppa:nginx/development
-sudo apt-get update
-sudo apt-get install nginx
+sudo add-apt-repository -y ppa:nginx/development && sudo apt-get update
+sudo apt-get -y install nginx
 ```
 
 
@@ -133,16 +132,15 @@ sudo mysql_secure_installation
 
 ### Install PHP7.1
 ```sh
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install php7.1
+sudo add-apt-repository -y ppa:ondrej/php && sudo apt-get update
+sudo apt-get -y install php7.1
 ```
 
 
 ### Choose and install PHP7.1 modules
 ```sh
 sudo apt-cache search php7.1-*
-sudo apt-get install php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mcrypt php7.1-sqlite3 php7.1-bz2 php7.1-mbstrin php7.1-soap php7.1-xml php7.1-zip
+sudo apt-get -y install php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mcrypt php7.1-sqlite3 php7.1-bz2 php7.1-mbstrin php7.1-soap php7.1-xml php7.1-zip
 ```
 
 
@@ -177,7 +175,7 @@ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/co
 
 ```sh
 sudo mkdir -p /etc/nginx/conf.d/server/
-sudo cd /etc/nginx/conf.d/server/
+cd /etc/nginx/conf.d/server/
 sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/conf.d/server/1-common.conf
 ```
 
@@ -393,7 +391,7 @@ sudo wget -O nginx_memory https://raw.github.com/munin-monitoring/contrib/master
 
 sudo chmod +x nginx_request
 sudo chmod +x nginx_status
-sudo chmod +x nginx_memory    
+sudo chmod +x nginx_memory
 
 sudo ln -s /usr/share/munin/plugins/nginx_request /etc/munin/plugins/nginx_request
 sudo ln -s /usr/share/munin/plugins/nginx_status /etc/munin/plugins/nginx_status
