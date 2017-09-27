@@ -1,20 +1,6 @@
 # Basic installation process of LEMP
 
-**Last update**: 28/7/2017, tested on Ubuntu 17.04
-
-1. [Basic installation process of LEMP](#basic-installation-process-of-lemp)
-	1. [Overview](#overview)
-	1. [Essentials - user, apt, default apps](#essentials)
-		1. [Installation script](#installation-script)
-		1. [Manual installation](#manual-script)
-	1. [Webserver - PHP7.1, MariaDB, Nginx, ...](#webserver-installation)
-	1. [Adding website](#add-new-website-configuring-php-&-nginx-&-mariadb)
-		1. [User, permissions, structure...](#create-the-dir-structure-for-new-website)		1. [PHP](#create-new-php-fpm-pool-for-new-site)
-		1. [Nginx vhost](#create-new-vhost-for-nginx)
-		1. [MariaDB (MySQL)](#mariadb-mysql)
-	1. [Todo](#todo)
-	1. [Reference](#reference)
-	1. [License](#license)
+**Last update**: 27/09/2017, tested on Ubuntu 17.04
 
 ## Overview
 
@@ -24,6 +10,45 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
 - PHP7.1
 - MariaDB
 
+## Table of Contents
+   * [Basic installation process of LEMP](#basic-installation-process-of-lemp)
+      * [Overview](#overview)
+      * [Essentials](#essentials)
+         * [Installation script](#installation-script)
+         * [Manual installation](#manual-installation)
+         * [Sett the correct timezone](#sett-the-correct-timezone)
+         * [Configure &amp; Update APT](#configure--update-apt)
+      * [Webserver installation](#webserver-installation)
+         * [Install Nginx](#install-nginx)
+         * [Install MariaDB](#install-mariadb)
+         * [Install PHP7.1](#install-php71)
+         * [Choose and install PHP7.1 modules](#choose-and-install-php71-modules)
+         * [Check the installed PHP version](#check-the-installed-php-version)
+         * [Configure Nginx](#configure-nginx)
+      * [Add new website, configuring PHP &amp; Nginx &amp; MariaDB](#add-new-website-configuring-php--nginx--mariadb)
+         * [Create the dir structure for new website](#1-create-the-dir-structure-for-new-website)
+         * [User groups and roles](#2-user-groups-and-roles)
+         * [Update permissions](#3-update-permissions)
+         * [Create new PHP-FPM pool for new site](#4-create-new-php-fpm-pool-for-new-site)
+         * [Configure the new pool](#5-configure-the-new-pool)
+         * [Restart PHP fpm and check it's running](#6-restart-php-fpm-and-check-its-running)
+         * [Create new "vhost" for Nginx](#7-create-new-vhost-for-nginx)
+         * [Configure the vhost](#8-configure-the-vhost)
+         * [Enable the new vhost](#9-enable-the-new-vhost)
+         * [MariaDB (MySQL)](#10-mariadb-mysql)
+      * [Others](#others)
+         * [Git](#git)
+         * [Adminer](#adminer)
+         * [Postfix (sending emails from PHP)](#postfix-sending-emails-from-php)
+         * [Munin](#munin)
+         * [Rabbitmq](#rabbitmq)
+         * [Supervisor](#supervisor)
+         * [Node.js &amp; NPM](#nodejs--npm)
+         * [Let's Encrypt](#lets-encrypt)
+      * [Todo](#todo)
+      * [Reference](#reference)
+         * [Setting PHP-FPM](#setting-php-fpm)
+      * [License](#license)
 
 ## Essentials
 
@@ -472,6 +497,7 @@ location ~ /.well-known {
 
 
 ## Reference
+- TOC created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 - https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-14-04
 - https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration
