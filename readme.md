@@ -16,8 +16,9 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
       * [Essentials](#essentials)
          * [Installation script](#installation-script)
          * [Manual installation](#manual-installation)
-         * [Sett the correct timezone](#sett-the-correct-timezone)
+         * [Set the correct timezone](#set-the-correct-timezone)
          * [Configure &amp; Update APT](#configure--update-apt)
+         * [Install security updates automatically](#install-security-updates-automatically)
       * [Webserver installation](#webserver-installation)
          * [Install Nginx](#install-nginx)
          * [Install MariaDB](#install-mariadb)
@@ -104,7 +105,7 @@ sudo echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
 ```
 
 
-### Sett the correct timezone
+### Set the correct timezone
 ```sh
 sudo dpkg-reconfigure tzdata
 ```
@@ -113,9 +114,13 @@ sudo dpkg-reconfigure tzdata
 ### Configure & Update APT
 ```sh
 sudo apt-get -y update ; sudo apt-get -y upgrade
-sudo apt-get -y install python-software-properties software-properties-common apache2-utils fail2ban
+sudo apt-get -y install unattended-upgrades python-software-properties software-properties-common apache2-utils fail2ban
 ```
 
+### Install security updates automatically
+```sh
+sudo dpkg-reconfigure -plow unattended-upgrades
+```
 
 #### Install essentials
 ```sh

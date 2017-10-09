@@ -33,9 +33,13 @@ echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
 
 # Essentials
 apt-get -y update ; apt-get -y upgrade
-apt-get -y install python-software-properties software-properties-common apache2-utils fail2ban
-apt-get -y install mc
-apt-get -y install htop
+apt-get -y install unattended-upgrades python-software-properties software-properties-common apache2-utils fail2ban
+apt-get -y install mc htop
+
+# Install security updates automatically
+echo -e "APT::Periodic::Update-Package-Lists \"1\";\nAPT::Periodic::Unattended-Upgrade \"1\";\n" > /etc/apt/apt.conf.d/20auto-upgrades
+/etc/init.d/unattended-upgrades restart
+
 
 # Setup simple Firewall
 ufw allow 22 #OpenSSH
