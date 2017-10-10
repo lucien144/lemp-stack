@@ -1,9 +1,9 @@
 #!/bin/bash
 
-###
-# Please, place below your public key!
-###
-KEY="ssh-rsa ABC123== you@email.com"
+### SETTINGS ->
+KEY="ssh-rsa ABC123== you@email.com"	# Please, place below your public key!
+TIMEZONE="Australia/Sydney"				# Change to your timezone
+### <- SETTINGS
 
 # Create admin user
 adduser --disabled-password --gecos "Admin" admin
@@ -40,6 +40,9 @@ apt-get -y install mc htop
 echo -e "APT::Periodic::Update-Package-Lists \"1\";\nAPT::Periodic::Unattended-Upgrade \"1\";\n" > /etc/apt/apt.conf.d/20auto-upgrades
 /etc/init.d/unattended-upgrades restart
 
+# Change the timezone
+echo $TIMEZONE > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
 
 # Setup simple Firewall
 ufw allow 22 #OpenSSH
