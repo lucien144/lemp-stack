@@ -66,5 +66,3 @@ server {
 
 ln -s /etc/nginx/sites-available/$HOST.$DOMAIN /etc/nginx/sites-enabled/$HOST.$DOMAIN
 service nginx restart ; systemctl status nginx.service
-
-rm ./add-vhost.sh
