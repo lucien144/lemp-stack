@@ -153,7 +153,7 @@ sudo apt-get -y install nginx
 
 ### Install MariaDB
 ```sh
-sudo apt-get install mariadb-server # Or MySQL: sudo apt-get install mysql-server
+sudo apt-get -y install mariadb-server # Or MySQL: sudo apt-get install mysql-server
 sudo service mysql stop # Stop the MySQL if is running.
 sudo mysql_install_db
 sudo service mysql start
