@@ -7,8 +7,9 @@
 This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.1. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
 
 - Nginx
-- PHP7.1
+- PHP7.1 (php-fpm)
 - MariaDB
+- Optional: git, munin, rabbitmq, supervisor, node.js, Let's Encrypt, postfix
 
 ## Table of Contents
    * [Basic installation process of LEMP](#basic-installation-process-of-lemp)
