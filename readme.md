@@ -1,6 +1,6 @@
 # Basic installation process of LEMP
 
-**Last update**: 27/09/2017, tested on Ubuntu 17.04
+**Last update**: 10/10/2017, tested on Ubuntu 17.04
 
 ## Overview
 
