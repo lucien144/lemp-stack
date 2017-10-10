@@ -354,7 +354,7 @@ sudo wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/nginx/co
 sudo mkdir -p /var/www/html/adminer/
 cd /var/www/html/adminer/
 sudo wget https://www.adminer.org/latest.php -O index.php
-sudo a+x index.php
+sudo chmod a+x index.php
 sudo htpasswd -c .htpasswd user
 sudo nginx -t && sudo nginx -s reload
 ```
