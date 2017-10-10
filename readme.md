@@ -359,6 +359,8 @@ sudo htpasswd -c .htpasswd user
 sudo nginx -t && sudo nginx -s reload
 ```
 
+Adminer is now ready at http://{server.ip}/adminer/
+
 ### Postfix (sending emails from PHP)
 
 In case you cannot send emails from PHP and getting error (`tail /var/log/mail.log`) `Network is unreachable`, you need to switch Postfix from IPv6 to IPv6.
