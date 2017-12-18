@@ -94,10 +94,18 @@ chmod 600 .ssh/authorized_keys
 #### disable password login for all users
 ```sh
 # Optional
-# sudo echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
-# sudo systemctl reload sshd
+sudo echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+sudo systemctl reload sshd
 ```
 
+Or disable the password for some users only (admin, user_tld)
+```sh
+# Optional
+sudo nano /etc/ssh/sshd_config
+> Match User admin,user_tld
+>    PasswordAuthentication no
+sudo systemctl reload sshd
+```
 
 #### Fix locale if you are getting "WARNING! Your environment specifies an invalid locale."
 ```sh
