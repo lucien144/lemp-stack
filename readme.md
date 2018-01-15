@@ -1,13 +1,13 @@
 # Basic installation process of LEMP
 
-**Last update**: 10/10/2017, tested on Ubuntu 17.04
+**Last update**: 15/01/2018, tested on Ubuntu 17.04
 
 ## Overview
 
-This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.1. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
+This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.2. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
 
 - Nginx
-- PHP7.1 (php-fpm)
+- PHP7.2 (php-fpm)
 - MariaDB
 - Optional: git, munin, rabbitmq, supervisor, node.js, Let's Encrypt, postfix
 
@@ -169,17 +169,17 @@ sudo mysql_secure_installation
 ```
 
 
-### Install PHP7.1
+### Install PHP7.2
 ```sh
 sudo add-apt-repository -y ppa:ondrej/php && sudo apt-get update
-sudo apt-get -y install php7.1
+sudo apt-get -y install php7.2
 ```
 
 
-### Choose and install PHP7.1 modules
+### Choose and install PHP7.2 modules
 ```sh
-sudo apt-cache search php7.1-*
-sudo apt-get -y install php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mcrypt php7.1-sqlite3 php7.1-bz2 php7.1-mbstrin php7.1-soap php7.1-xml php7.1-zip
+sudo apt-cache search php7.2-*
+sudo apt-get -y install php7.2-fpm php7.2-mysql php7.2-curl php7.2-gd php7.2-mcrypt php7.2-sqlite3 php7.2-bz2 php7.2-mbstrin php7.2-soap php7.2-xml php7.2-zip
 ```
 
 
@@ -259,7 +259,7 @@ sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 
 ### 4. Create new PHP-FPM pool for new site
 ```sh
-sudo nano /etc/php/7.1/fpm/pool.d/new-website.tld.conf
+sudo nano /etc/php/7.2/fpm/pool.d/new-website.tld.conf
 ```
 
 #### 5. Configure the new pool
@@ -267,7 +267,7 @@ sudo nano /etc/php/7.1/fpm/pool.d/new-website.tld.conf
 [new-website]
 user = new-website
 group = new-website
-listen = /run/php/php7.1-fpm-new-website.sock
+listen = /run/php/php7.2-fpm-new-website.sock
 listen.owner = www-data
 listen.group = www-data
 php_admin_value[disable_functions] = exec,passthru,shell_exec,system
@@ -294,7 +294,7 @@ chdir = /
 
 #### 6. Restart PHP fpm and check it's running
 ```sh
-sudo service php7.1-fpm restart
+sudo service php7.2-fpm restart
 ps aux | grep new-site
 ```
 
@@ -321,7 +321,7 @@ server {
     location ~ \.php$ {
         try_files $uri $uri/ /index.php?$args;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.1-fpm-new-site.sock;
+        fastcgi_pass unix:/var/run/php/php7.2-fpm-new-site.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
