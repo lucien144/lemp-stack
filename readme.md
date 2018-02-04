@@ -474,6 +474,20 @@ sudo service rabbitmq-server restart
 
 `sudo apt-get install supervisor`
 
+#### Enable the web interface
+```sh
+echo "
+[inet_http_server]
+port=9001
+username=admin
+password=*********" | sudo tee --append /etc/supervisor/supervisord.conf
+
+sudo service supervisor reload
+sudo ufw allow 9001
+```
+
+The interface should be available on http://{SERVER_IP}:9001/
+
 ### Node.js & NPM
 ```
 sudo apt-get install nodejs
