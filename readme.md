@@ -133,8 +133,7 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 
 #### Install essentials
 ```sh
-sudo apt-get install mc
-sudo apt-get install htop
+sudo apt-get -y install mc htop
 ```
 
 #### Setup and configure Firewall
