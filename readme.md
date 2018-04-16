@@ -368,6 +368,8 @@ sudo nginx -t && sudo nginx -s reload
 
 Adminer is now ready at http://{server.ip}/adminer/
 
+_Also, don't forget to change the username 👆._
+
 ### Postfix (sending emails from PHP)
 
 In case you cannot send emails from PHP and getting error (`tail /var/log/mail.log`) `Network is unreachable`, you need to switch Postfix from IPv6 to IPv6.
@@ -501,8 +503,9 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 ### Let's Encrypt
 ```
 apt-get -y install letsencrypt
-letsencrypt certonly -a webroot --webroot-path=/var/www/thebuttongame.io/web -d thebuttongame.io -d www.thebuttongame.io
+letsencrypt certonly -a webroot --webroot-path=/var/www/example.com/web -d example.com -d www.example.com
 ```
+_👆 Change the example.com to your domain._
 
 ```
 # Allow Let's Encrypt authorization
