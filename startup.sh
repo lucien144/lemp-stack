@@ -23,7 +23,7 @@ chown -R admin:admin /home/admin/.ssh
 
 # Disable password login for this user
 # Optional
-echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+echo "PasswordAuthentication no" | tee --append /etc/ssh/sshd_config
 
 # Reload SSH changes
 systemctl reload sshd

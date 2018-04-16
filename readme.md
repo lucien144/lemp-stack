@@ -94,7 +94,7 @@ chmod 600 .ssh/authorized_keys
 #### disable password login for all users
 ```sh
 # Optional
-sudo echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+echo "PasswordAuthentication no" | sudo tee --append /etc/ssh/sshd_config
 sudo systemctl reload sshd
 ```
 
