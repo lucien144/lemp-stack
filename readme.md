@@ -122,7 +122,7 @@ sudo dpkg-reconfigure tzdata
 
 ### Configure & Update APT
 ```sh
-sudo apt-get -y update ; sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade ; sudo apt-get -y update ; sudo apt-get -y upgrade
 sudo apt-get -y install unattended-upgrades python-software-properties software-properties-common apache2-utils fail2ban
 ```
 
