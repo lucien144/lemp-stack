@@ -39,6 +39,7 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
          * [Enable the new vhost](#9-enable-the-new-vhost)
          * [MariaDB (MySQL)](#10-mariadb-mysql)
       * [Others](#others)
+         * [Git Aware Prompt](#git-aware-prompt)
          * [Git](#git)
          * [Adminer](#adminer)
          * [Postfix (sending emails from PHP)](#postfix-sending-emails-from-php)
@@ -345,6 +346,19 @@ sudo mysql -u root -p
 ```
 
 ## Others
+
+### Git Aware Prompt
+
+![](https://cdn-pro.dprcdn.net/files/acc_44118/mIFojX)
+
+If you want to have nice git-aware prompt with some handy aliases, use this:
+```
+sudo su virtualhostuser
+cd ~
+mkdir ~/.bash && cd ~/.bash && git clone git://github.com/jimeh/git-aware-prompt.git && cd ~ && wget https://gist.githubusercontent.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6/raw/525ab312789643d61a937904e236edf8755028ca/.bashrc
+bash
+```
+More information about aliases and other [in this gist](https://gist.github.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6).
 
 ### Git
 ```
