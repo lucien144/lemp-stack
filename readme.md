@@ -47,7 +47,6 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
          * [Rabbitmq](#rabbitmq)
          * [Supervisor](#supervisor)
          * [Node.js &amp; NPM](#nodejs--npm)
-         * [Let's Encrypt](#lets-encrypt)
       * [Todo](#todo)
       * [Reference](#reference)
          * [Setting PHP-FPM](#setting-php-fpm)
@@ -513,21 +512,6 @@ If you are getting error `/usr/bin/env: ‘node’: No such file or directory` r
 ```
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
-
-### Let's Encrypt
-```
-apt-get -y install letsencrypt
-letsencrypt certonly -a webroot --webroot-path=/var/www/example.com/web -d example.com -d www.example.com
-```
-_👆 Change the example.com to your domain._
-
-```
-# Allow Let's Encrypt authorization
-location ~ /.well-known {
-  allow all;
-}
-```
-
 
 ## Todo
 - [ ] better vhost permissions for reading for other users
