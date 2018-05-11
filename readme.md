@@ -520,11 +520,18 @@ If you are getting error `/usr/bin/env: ‘node’: No such file or directory` r
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
+### Composer
+```
+wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
+sudo mv composer.phar /usr/local/bin/composer
+```
+Reference: https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
+
 ## Todo
 - [ ] better vhost permissions for reading for other users
 - [ ] better description of nginx configuration
 - [ ] script for creating new vhost
-- [ ] composer
+- [x] composer
 - [ ] Let's encrypt (?)
 - [ ] s3cmd
 - [ ] automysqlbackup
