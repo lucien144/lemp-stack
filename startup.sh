@@ -33,7 +33,7 @@ echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
 
 # Essentials
 apt-get dist-upgrade ; apt-get -y update ; apt-get -y upgrade
-apt-get -y install unattended-upgrades python-software-properties software-properties-common apache2-utils fail2ban
+apt-get -y install unattended-upgrades software-properties-common apache2-utils fail2ban
 apt-get -y install mc htop
 
 # Install security updates automatically
