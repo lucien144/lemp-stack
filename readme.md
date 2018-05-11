@@ -151,6 +151,13 @@ sudo ufw status
 
 ## Webserver installation
 
+_You can skip these steps by downloading and running the `lemp.sh` script:_
+
+```sh
+wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/lemp.sh && chmod u+x lemp.sh
+sudo lemp.sh
+```
+
 ### Install Nginx
 ```sh
 sudo add-apt-repository -y ppa:nginx/development && sudo apt-get update
