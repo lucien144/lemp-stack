@@ -151,21 +151,21 @@ sudo ufw status
 
 ## Webserver installation
 
-_You can skip these steps by downloading and running the `lemp.sh` script:_
+_You can skip steps 1-4 by downloading and running the `lemp.sh` script:_
 
 ```sh
 wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/lemp.sh && chmod u+x lemp.sh
 sudo lemp.sh
 ```
 
-### Install Nginx
+### 1. Install Nginx
 ```sh
 sudo add-apt-repository -y ppa:nginx/development && sudo apt-get update
 sudo apt-get -y install nginx
 ```
 
 
-### Install MariaDB
+### 2. Install MariaDB
 ```sh
 sudo apt-get -y install mariadb-server # Or MySQL: sudo apt-get install mysql-server
 sudo service mysql stop # Stop the MySQL if is running.
@@ -175,26 +175,26 @@ sudo mysql_secure_installation
 ```
 
 
-### Install PHP7.2
+### 3. Install PHP7.2
 ```sh
 sudo add-apt-repository -y ppa:ondrej/php && sudo apt-get update
 sudo apt-get -y install php7.2
 ```
 
 
-### Choose and install PHP7.2 modules
+### 4. Choose and install PHP7.2 modules
 ```sh
 sudo apt-cache search php7.2-*
 sudo apt-get -y install php7.2-fpm php7.2-curl php7.2-gd php7.2-json php7.2-mysql php7.2-sqlite3 php7.2-pgsql php7.2-bz2 php7.2-mbstring php7.2-soap php7.2-xml php7.2-zip
 ```
 
 
-### Check the installed PHP version
+### 5. Check the installed PHP version
 ```sh
 php -v
 ```
 
-### Configure Nginx
+### 6. Configure Nginx
 
 #### Configure `/etc/nginx/nginx.conf`
 ```sh
