@@ -361,7 +361,7 @@ If you want to have nice git-aware prompt with some handy aliases, use this:
 ```
 sudo su virtualhostuser
 cd ~
-mkdir ~/.bash && cd ~/.bash && git clone git://github.com/jimeh/git-aware-prompt.git && cd ~ && wget https://gist.githubusercontent.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6/raw/525ab312789643d61a937904e236edf8755028ca/.bashrc
+mkdir ~/.bash && cd ~/.bash && git clone git://github.com/jimeh/git-aware-prompt.git && cd ~ && wget https://gist.githubusercontent.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6/raw/1d8a71172b1890adfe43d179f69fba66324b2014/.bashrcbashrc
 bash
 ```
 More information about aliases and other [in this gist](https://gist.github.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6).
