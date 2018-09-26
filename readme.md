@@ -2,6 +2,8 @@
 
 **Last update**: 17/09/2018, tested on Ubuntu 18.04
 
+🔥 👕 🤓 If you are looking for **cool t-shirts for web developers**, check out my [Devnull Clothing](https://devnull.store?utm_source=github&utm_medium=link&utm_campaign=lemp).
+
 ## Overview
 
 This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.2. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
