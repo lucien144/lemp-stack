@@ -7,4 +7,4 @@ wget https://www.adminer.org/latest.php
 
 cd plugins/
 wget https://raw.github.com/vrana/adminer/master/plugins/plugin.php
-wget https://rawgit.com/fprochazka/adminer-colors/master/AdminerColors.php
+wget https://cdn.jsdelivr.net/gh/fprochazka/adminer-colors/AdminerColors.php
