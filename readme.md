@@ -4,9 +4,8 @@
 
 ---
 <p align="center">
-  Looking for <strong>cool t-shirts for web developers</strong>?<br>
-🔥 👕 🤓 <br>
-Check out my <a href="https://devnull.store?utm_source=github&utm_medium=link&utm_campaign=lemp" target="_blank">DevNull Clothing</a>.
+🔥 Looking for <strong>cool t-shirts for web developers</strong>?<br>
+Check out my <a href="https://devnull.store?utm_source=github&utm_medium=link&utm_campaign=lemp" target="_blank">Devnull Clothing</a>.
 </p>
 
 ---
