@@ -2,7 +2,14 @@
 
 **Last update**: 17/09/2018, tested on Ubuntu 18.04
 
-🔥 👕 🤓 If you are looking for **cool t-shirts for web developers**, check out my [Devnull Clothing](https://devnull.store?utm_source=github&utm_medium=link&utm_campaign=lemp).
+---
+<p align="center">
+Looking for **cool t-shirts for web developers**?<br>
+🔥 👕 🤓 <br>
+Check out my [Devnull Clothing](https://devnull.store?utm_source=github&utm_medium=link&utm_campaign=lemp).
+</p>
+
+---
 
 ## Overview
 
