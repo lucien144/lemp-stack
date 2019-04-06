@@ -575,6 +575,7 @@ Reference: https://getcomposer.org/doc/faqs/how-to-install-composer-programmatic
  - http://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/
  - https://serversforhackers.com/video/php-fpm-process-management
  - https://overloaded.io/finding-process-memory-usage-linux
+ - https://gist.github.com/denji/8359866
 
 ## License
 
