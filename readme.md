@@ -352,7 +352,7 @@ sudo nginx -t && sudo nginx -s reload
 
 ### 10. MariaDB (MySQL)
 ```sh
-sudo mysql -u root
+sudo mysql
 > CREATE DATABASE newwebsite_tld;
 > CREATE USER 'newwebsite_tld'@'localhost' IDENTIFIED BY 'password';
 > GRANT ALL PRIVILEGES ON newwebsite_tld.* TO 'newwebsite_tld'@'localhost';
