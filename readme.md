@@ -369,7 +369,7 @@ If you want to have nice git-aware prompt with some handy aliases, use this:
 ```
 sudo su virtualhostuser
 cd ~
-wget https://gist.githubusercontent.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6/raw/2d14db3bc41e414ecce95db4ecd75252ce139eab/install.sh && cat install.sh | bash
+wget https://gist.githubusercontent.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6/raw/0065dcd767feb3b7152db8c9f014c38da3694ffe/install.sh && cat install.sh | bash
 bash
 ```
 More information about aliases and other [in this gist](https://gist.github.com/lucien144/56fbb184b1ec01fae1adf2e7abb626b6).
