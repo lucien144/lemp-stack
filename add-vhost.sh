@@ -37,6 +37,7 @@ touch /etc/nginx/sites-available/$HOST.$DOMAIN
 echo "server {
 	listen 80;
 	server_name $HOST.$DOMAIN;
+	location ~ ^/\.well-known/(.*) {}
 	location / {
 		return 302 http://www.$HOST.$DOMAIN$request_uri;
 	}
