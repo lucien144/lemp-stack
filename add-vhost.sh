@@ -38,7 +38,7 @@ echo "server {
 	listen 80;
 	server_name $HOST.$DOMAIN;
 	location / {
-		return 301 http://www.$HOST.$DOMAIN$request_uri;
+		return 302 http://www.$HOST.$DOMAIN$request_uri;
 	}
 }
 server {
