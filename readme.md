@@ -144,6 +144,15 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 sudo apt-get -y install mc htop
 ```
 
+#### Replace `rm` with `trash`
+This is optional but recommended. `rm` is a dangerous command therefore is recommended to replace it by safer version `trash` that instead of removing files moving them to a trash. More [info here](https://github.com/andreafrancia/trash-cli).
+
+```sh
+$ sudo apt-get -y install trash-cli
+$ echo "alias rm='echo \"This is not the command you are looking for. Use <trash> instead.\"; false'" | sudo tee --append
+```
+
+
 #### Setup and configure Firewall
 
 Open SSH port only.
@@ -257,9 +266,10 @@ sudo mkdir -p /var/www/vhosts/new-website.tld/{web,logs,ssl}
 
 ### 2. User groups and roles
 ```sh
-sudo groupadd new-website
-sudo useradd -g new-website -d /var/www/vhosts/new-website.tld new-website
-sudo passwd new-website
+$ sudo groupadd new-website
+$ sudo useradd -g new-website -d /var/www/vhosts/new-website.tld new-website
+$ sudo passwd new-website
+$ sudo usermod -s /bin/bash new-website
 ```
 
 You can switch users by using `sudo su - new-website`
