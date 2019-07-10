@@ -36,6 +36,10 @@ apt-get dist-upgrade ; apt-get -y update ; apt-get -y upgrade
 apt-get -y install unattended-upgrades software-properties-common apache2-utils fail2ban
 apt-get -y install mc htop
 
+# Trash-cli
+apt-get -y install trash-cli
+echo "alias rm='echo \"This is not the command you are looking for. Use <trash> instead.\"; false'" >> /etc/bash.bashrc
+
 # Install security updates automatically
 echo -e "APT::Periodic::Update-Package-Lists \"1\";\nAPT::Periodic::Unattended-Upgrade \"1\";\nUnattended-Upgrade::Automatic-Reboot \"false\";\n" > /etc/apt/apt.conf.d/20auto-upgrades
 /etc/init.d/unattended-upgrades restart
