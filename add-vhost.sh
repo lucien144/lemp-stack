@@ -8,6 +8,7 @@ mkdir -p /var/www/vhosts/$HOST.$DOMAIN/ssl
 groupadd $HOST
 useradd -g $HOST -d /var/www/vhosts/$HOST.$DOMAIN $HOST
 passwd $HOST
+usermod -s /bin/bash $HOST
 
 chown -R $HOST:$HOST /var/www/vhosts/$HOST.$DOMAIN
 chmod -R 0775 /var/www/vhosts/$HOST.$DOMAIN
