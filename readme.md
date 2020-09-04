@@ -1,6 +1,8 @@
 # Basic installation process of LEMP
 
-**Last update**: 10/07/2019, tested on Ubuntu 18.04
+**Last update**: 04/09/2020, tested on Ubuntu 20.04 with PHP7.4
+
+If you are looking for the older versions of the PHP, 👀 at branches [php7.2](https://github.com/lucien144/lemp-stack/tree/php7.2) or [php7.1](https://github.com/lucien144/lemp-stack/tree/php7.1)
 
 ---
 <p align="center">
