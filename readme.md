@@ -12,10 +12,10 @@ Check out my <a href="https://devnull.store?utm_source=github&utm_medium=link&ut
 
 ## Overview
 
-This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.2. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
+This document is a list of notes when installing several Ubuntu LEMP instances w/ PHP7.4. With some sort of imagination it can be considered as a step-by-step tutorial of really basic installation process of LEMP. I wrote it mainly for myself, but feel free to use it. The LEMP consists of:
 
 - Nginx
-- PHP7.2 (php-fpm)
+- PHP7.4 (php-fpm)
 - MariaDB
 - Optional: git, munin, rabbitmq, supervisor, node.js, Let's Encrypt, postfix
 
@@ -31,8 +31,8 @@ This document is a list of notes when installing several Ubuntu LEMP instances w
       * [Webserver installation](#webserver-installation)
          * [Install Nginx](#install-nginx)
          * [Install MariaDB](#install-mariadb)
-         * [Install PHP7.2](#install-php72)
-         * [Choose and install PHP7.2 modules](#choose-and-install-php72-modules)
+         * [Install PHP7.4](#install-php72)
+         * [Choose and install PHP7.4 modules](#choose-and-install-php74-modules)
          * [Check the installed PHP version](#check-the-installed-php-version)
          * [Configure Nginx](#configure-nginx)
       * [Add new website, configuring PHP &amp; Nginx &amp; MariaDB](#add-new-website-configuring-php--nginx--mariadb)
@@ -172,7 +172,7 @@ _You can skip steps 1-4 by downloading and running the `lemp.sh` script:_
 
 ```sh
 wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/lemp.sh && chmod u+x lemp.sh
-sudo lemp.sh
+sudo ./lemp.sh
 ```
 
 ### 1. Install Nginx
@@ -192,17 +192,17 @@ sudo mysql_secure_installation
 ```
 
 
-### 3. Install PHP7.2
+### 3. Install PHP7.4
 ```sh
 sudo add-apt-repository -y ppa:ondrej/php && sudo apt-get update
-sudo apt-get -y install php7.2
+sudo apt-get -y install php7.4
 ```
 
 
-### 4. Choose and install PHP7.2 modules
+### 4. Choose and install PHP7.4 modules
 ```sh
-sudo apt-cache search php7.2-*
-sudo apt-get -y install php7.2-fpm php7.2-curl php7.2-gd php7.2-json php7.2-mysql php7.2-sqlite3 php7.2-pgsql php7.2-bz2 php7.2-mbstring php7.2-soap php7.2-xml php7.2-zip
+sudo apt-cache search php7.4-*
+sudo apt-get -y install php7.4-fpm php7.4-curl php7.4-gd php7.4-json php7.4-mysql php7.4-sqlite3 php7.4-pgsql php7.4-bz2 php7.4-mbstring php7.4-soap php7.4-xml php7.4-zip
 ```
 
 
@@ -283,7 +283,7 @@ sudo chmod -R 0775 /var/www/vhosts/new-website.tld
 
 ### 4. Create new PHP-FPM pool for new site
 ```sh
-sudo nano /etc/php/7.2/fpm/pool.d/new-website.tld.conf
+sudo nano /etc/php/7.4/fpm/pool.d/new-website.tld.conf
 ```
 
 #### 5. Configure the new pool
@@ -291,7 +291,7 @@ sudo nano /etc/php/7.2/fpm/pool.d/new-website.tld.conf
 [new-website]
 user = new-website
 group = new-website
-listen = /run/php/php7.2-fpm-new-website.sock
+listen = /run/php/php7.4-fpm-new-website.sock
 listen.owner = www-data
 listen.group = www-data
 php_admin_value[disable_functions] = exec,passthru,shell_exec,system
@@ -318,7 +318,7 @@ chdir = /
 
 #### 6. Restart PHP fpm and check it's running
 ```sh
-sudo service php7.2-fpm restart
+sudo service php7.4-fpm restart
 ps aux | grep new-site
 ```
 
@@ -345,7 +345,7 @@ server {
     location ~ \.php$ {
         try_files $uri $uri/ /index.php?$args;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.2-fpm-new-site.sock;
+        fastcgi_pass unix:/var/run/php/php7.4-fpm-new-site.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         include fastcgi_params;
