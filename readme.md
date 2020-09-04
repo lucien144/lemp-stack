@@ -253,10 +253,8 @@ Steps 1. - 9. can be skipped by calling the `add-vhost.sh`. Just download `add-v
 The file is deleted automatically.
 
 ```sh
-cd ~
-wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/add-vhost.sh
-chmod u+x add-vhost.sh
-sudo ./add-vhost.sh
+$ cd ~ && wget https://raw.githubusercontent.com/lucien144/lemp-stack/master/add-vhost.sh && chmod u+x add-vhost.sh
+$ sudo ./add-vhost.sh
 ```
 
 ### 1. Create the dir structure for new website
