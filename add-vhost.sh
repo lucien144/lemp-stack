@@ -13,12 +13,12 @@ usermod -s /bin/bash $HOST
 chown -R $HOST:$HOST /var/www/vhosts/$HOST.$DOMAIN
 chmod -R 0775 /var/www/vhosts/$HOST.$DOMAIN
 
-touch /etc/php/7.2/fpm/pool.d/$HOST.$DOMAIN.conf
+touch /etc/php/7.4/fpm/pool.d/$HOST.$DOMAIN.conf
 
 echo "[$HOST]
 user = $HOST
 group = $HOST
-listen = /run/php/php7.2-fpm-$HOST.sock
+listen = /run/php/php7.4-fpm-$HOST.sock
 listen.owner = www-data
 listen.group = www-data
 php_admin_value[disable_functions] = exec,passthru,shell_exec,system
@@ -28,9 +28,9 @@ pm.max_children = 5
 pm.start_servers = 2
 pm.min_spare_servers = 1
 pm.max_spare_servers = 3
-chdir = /" >> /etc/php/7.2/fpm/pool.d/$HOST.$DOMAIN.conf
+chdir = /" >> /etc/php/7.4/fpm/pool.d/$HOST.$DOMAIN.conf
 
-service php7.2-fpm restart
+service php7.4-fpm restart
 ps aux | grep $HOST
 
 touch /etc/nginx/sites-available/$HOST.$DOMAIN
@@ -59,7 +59,7 @@ server {
 	location ~ \.php$ {
 		try_files \$uri \$uri/ /index.php?$args;
 		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-		fastcgi_pass unix:/var/run/php/php7.2-fpm-$HOST.sock;
+		fastcgi_pass unix:/var/run/php/php7.4-fpm-$HOST.sock;
 		fastcgi_index index.php;
 		fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
 		include fastcgi_params;
