@@ -540,7 +540,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 ### Composer
 ```
-wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
+wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
 sudo mv composer.phar /usr/local/bin/composer
 ```
 Reference: https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
